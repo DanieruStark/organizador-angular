@@ -1,9 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
-import { MatCardModule } from '@angular/material/card';
-import { MatTableModule } from '@angular/material/table';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { AppMaterialModule } from '../shared/app-material/app-material.module';
 import { DespesasRoutingModule } from './despesas-routing.module';
 import { DespesasComponent } from './despesas/despesas.component';
 
@@ -12,9 +9,7 @@ import { DespesasComponent } from './despesas/despesas.component';
   imports: [
     CommonModule,
     DespesasRoutingModule,
-    MatTableModule,
-    MatCardModule,
-    MatToolbarModule,
+    AppMaterialModule
   ],
 })
 export class DespesasModule {}
