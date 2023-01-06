@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Despesa } from '../modelo/despesa';
+import { DespesasService } from '../services/despesas.service';
 
 @Component({
   selector: 'app-despesas',
@@ -7,12 +8,12 @@ import { Despesa } from '../modelo/despesa';
   styleUrls: ['./despesas.component.scss']
 })
 export class DespesasComponent implements OnInit {
-  despesas: Despesa[] = [
-    {_id: "1", nome: "Enegia", categoria: "casa"}
-  ];
+  despesas: Despesa[];
   displayedColumns = ['nome', 'categoria'];
 
-  constructor() { }
+  constructor(private despesasService: DespesasService) {
+    this.despesas = this.despesasService.list();
+   }
 
   ngOnInit(): void {
   }
