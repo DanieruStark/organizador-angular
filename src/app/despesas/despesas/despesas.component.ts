@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Despesa } from '../modelo/despesa';
 import { DespesasService } from '../services/despesas.service';
 
@@ -8,7 +9,7 @@ import { DespesasService } from '../services/despesas.service';
   styleUrls: ['./despesas.component.scss']
 })
 export class DespesasComponent implements OnInit {
-  despesas: Despesa[];
+  despesas: Observable<Despesa[]>;
   displayedColumns = ['nome', 'categoria'];
 
   constructor(private despesasService: DespesasService) {

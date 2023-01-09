@@ -1,13 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Despesa } from '../modelo/despesa';
-import { HttpClient } from "@angular/common/http";
 @Injectable({
   providedIn: 'root',
 })
 export class DespesasService {
+  private readonly API = '/assets/despesas.json';
+
   constructor(private httpClient: HttpClient) {}
 
-  list(): Despesa[] {
-    return [{ _id: '1', nome: 'Enegia', categoria: 'casa' }];
+  list() {
+    return this.httpClient.get<Despesa[]>(this.API);
   }
 }
