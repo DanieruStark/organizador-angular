@@ -12,7 +12,7 @@ import { ErrorDialogComponent } from '../../shared/components/error-dialog/error
 })
 export class DespesasComponent {
   despesas$: Observable<Despesa[]>;
-  displayedColumns = ['nome', 'categoria'];
+  displayedColumns = ['name', 'category'];
 
   constructor(private despesasService: DespesasService, public dialog: MatDialog) {
     this.despesas$ = this.despesasService.list().pipe(

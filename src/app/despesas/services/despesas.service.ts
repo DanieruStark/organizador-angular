@@ -5,7 +5,7 @@ import { Despesa } from '../modelo/despesa';
   providedIn: 'root',
 })
 export class DespesasService {
-  private readonly API = '/assets/despesas.json';
+  private readonly API = '/api/despesas';
 
   constructor(private httpClient: HttpClient) {}
 

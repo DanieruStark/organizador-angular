@@ -1,6 +1,5 @@
 export interface Despesa {
   _id: string;
-  nome: string;
-  categoria: string;
-
+  name: string;
+  category: string;
 }
