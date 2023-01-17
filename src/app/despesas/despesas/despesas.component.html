@@ -19,7 +19,12 @@
       <!-- Ações Column -->
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef>
-          <button mat-icon-button color="accent" aria-label="botão adicionar">
+          <button
+            mat-icon-button
+            color="accent"
+            aria-label="botão adicionar"
+            (click)="onAdd()"
+          >
             <mat-icon>add</mat-icon>
           </button>
         </mat-header-cell>

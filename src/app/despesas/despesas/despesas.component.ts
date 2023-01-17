@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
@@ -17,7 +18,9 @@ export class DespesasComponent {
 
   constructor(
     private despesasService: DespesasService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.despesas$ = this.despesasService.list().pipe(
       catchError((error) => {
@@ -31,5 +34,9 @@ export class DespesasComponent {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMsg,
     });
+  }
+
+  onAdd() {
+    this.router.navigate(['novo'], { relativeTo: this.route });
   }
 }
