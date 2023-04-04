@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { DespesasService } from '../services/despesas.service';
@@ -11,19 +11,18 @@ import { DespesasService } from '../services/despesas.service';
   styleUrls: ['./despesas-form.component.scss'],
 })
 export class DespesasFormComponent {
-  form: FormGroup;
+  form = this.formBuilder.group({
+    name: [''],
+    category: [''],
+    price: [0],
+  });
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: NonNullableFormBuilder,
     private service: DespesasService,
     private snackBar: MatSnackBar,
     private locaiton: Location
   ) {
-    this.form = this.formBuilder.group({
-      name: [null],
-      category: [null],
-      price: [null],
-    });
   }
 
   onSubmit() {

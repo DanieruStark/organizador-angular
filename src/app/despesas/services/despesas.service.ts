@@ -13,7 +13,7 @@ export class DespesasService {
     return this.httpClient.get<Despesa[]>(this.API);
   }
 
-  save(despesa: Despesa) {
+  save(despesa: Partial<Despesa>) {
     return this.httpClient
       .post<Despesa>(this.API, despesa);
   }
