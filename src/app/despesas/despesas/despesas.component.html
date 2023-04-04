@@ -16,6 +16,11 @@
         <td mat-cell *matCellDef="let despesa">{{ despesa.category }}</td>
       </ng-container>
 
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>Preço</th>
+        <td mat-cell *matCellDef="let despesa">{{ despesa.price }}</td>
+      </ng-container>
+
       <!-- Ações Column -->
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef>

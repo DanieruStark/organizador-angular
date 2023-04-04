@@ -14,7 +14,7 @@ import { DespesasService } from '../services/despesas.service';
 })
 export class DespesasComponent {
   despesas$: Observable<Despesa[]>;
-  displayedColumns = ['name', 'category', 'actions'];
+  displayedColumns = ['name', 'category', 'price', 'actions'];
 
   constructor(
     private despesasService: DespesasService,

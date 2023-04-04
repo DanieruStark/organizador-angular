@@ -12,4 +12,9 @@ export class DespesasService {
   list() {
     return this.httpClient.get<Despesa[]>(this.API);
   }
+
+  save(despesa: Despesa) {
+    return this.httpClient
+      .post<Despesa>(this.API, despesa);
+  }
 }
