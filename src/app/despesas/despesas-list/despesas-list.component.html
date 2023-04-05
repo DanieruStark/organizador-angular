@@ -1,0 +1,44 @@
+<mat-table [dataSource]="despesas">
+  <!-- Nome Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>Despesa</mat-header-cell>
+    <mat-cell *matCellDef="let despesa">{{ despesa.name }}</mat-cell>
+  </ng-container>
+
+  <!-- Categoria Column -->
+  <ng-container matColumnDef="category">
+    <mat-header-cell *matHeaderCellDef>Categoria</mat-header-cell>
+    <mat-cell *matCellDef="let despesa">{{ despesa.category }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef>Preço</mat-header-cell>
+    <mat-cell *matCellDef="let despesa">{{ despesa.price }}</mat-cell>
+  </ng-container>
+
+  <!-- Ações Column -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef class="action-column-header">
+      <button
+        mat-icon-button
+        color="accent"
+        aria-label="botão adicionar"
+        (click)="onAdd()"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let despesa" class="action-column">
+      <button mat-icon-button color="primary" aria-label="botão editar">
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button mat-icon-button color="warn" aria-label="botão remover">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

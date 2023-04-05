@@ -7,9 +7,10 @@ import { SharedModule } from '../shared/shared.module';
 import { DespesasRoutingModule } from './despesas-routing.module';
 import { DespesasComponent } from './despesas/despesas.component';
 import { DespesasFormComponent } from './despesasform/despesas-form.component';
+import { DespesasListComponent } from './despesas-list/despesas-list.component';
 
 @NgModule({
-  declarations: [DespesasComponent, DespesasFormComponent],
+  declarations: [DespesasComponent, DespesasFormComponent, DespesasListComponent],
   imports: [
     CommonModule,
     DespesasRoutingModule,
