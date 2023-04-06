@@ -4,10 +4,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppMaterialModule } from '../shared/app-material/app-material.module';
 import { SharedModule } from '../shared/shared.module';
+import { DespesasListComponent } from './components/despesas-list/despesas-list.component';
+import { DespesasComponent } from './containers/despesas/despesas.component';
 import { DespesasRoutingModule } from './despesas-routing.module';
-import { DespesasComponent } from './despesas/despesas.component';
-import { DespesasFormComponent } from './despesasform/despesas-form.component';
-import { DespesasListComponent } from './despesas-list/despesas-list.component';
+import { DespesasFormComponent } from './containers/despesasform/despesas-form.component';
 
 @NgModule({
   declarations: [DespesasComponent, DespesasFormComponent, DespesasListComponent],

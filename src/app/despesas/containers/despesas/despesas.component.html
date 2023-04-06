@@ -4,6 +4,7 @@
     <app-despesas-list
       *ngIf="despesas$ | async as despesas; else loading"
       [despesas]="despesas"
+      (add)="onAdd()"
     ></app-despesas-list>
 
     <ng-template #loading>
