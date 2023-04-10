@@ -17,4 +17,8 @@ export class DespesasService {
     return this.httpClient
       .post<Despesa>(this.API, despesa);
   }
+
+  loadById(id: string){
+    return this.httpClient.get<Despesa>(`${this.API}/${id}`);
+  }
 }

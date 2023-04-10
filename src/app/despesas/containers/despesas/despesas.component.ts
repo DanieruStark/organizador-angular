@@ -38,4 +38,8 @@ export class DespesasComponent {
   onAdd() {
     this.router.navigate(['novo'], { relativeTo: this.route });
   }
+
+  onEdit(despesa: Despesa) {
+    this.router.navigate(['edit', despesa._id], { relativeTo: this.route });
+  }
 }

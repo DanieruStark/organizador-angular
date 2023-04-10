@@ -10,10 +10,15 @@ import { Despesa } from '../../modelo/despesa';
 export class DespesasListComponent {
   @Input() despesas: Despesa[] = [];
   @Output() add = new EventEmitter(false);
+  @Output() edit = new EventEmitter(false);
 
   readonly displayedColumns = ['name', 'category', 'price', 'actions'];
 
   onAdd() {
     this.add.emit(true);
+  }
+
+  onEdit(despesa: Despesa){
+    this.edit.emit(despesa);
   }
 }

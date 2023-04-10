@@ -5,6 +5,7 @@
       *ngIf="despesas$ | async as despesas; else loading"
       [despesas]="despesas"
       (add)="onAdd()"
+      (edit)="onEdit($event)"
     ></app-despesas-list>
 
     <ng-template #loading>
