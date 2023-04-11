@@ -1,8 +1,10 @@
 import { Location } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
 
+import { Despesa } from '../../modelo/despesa';
 import { DespesasService } from '../../services/despesas.service';
 
 @Component({
@@ -10,8 +12,9 @@ import { DespesasService } from '../../services/despesas.service';
   templateUrl: './despesas-form.component.html',
   styleUrls: ['./despesas-form.component.scss'],
 })
-export class DespesasFormComponent {
+export class DespesasFormComponent implements OnInit {
   form = this.formBuilder.group({
+    _id: [''],
     name: [''],
     category: [''],
     price: [0],
@@ -21,8 +24,19 @@ export class DespesasFormComponent {
     private formBuilder: NonNullableFormBuilder,
     private service: DespesasService,
     private snackBar: MatSnackBar,
-    private locaiton: Location
-  ) {
+    private locaiton: Location,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    const despesa: Despesa = this.route.snapshot.data['despesa'];
+    console.log(despesa);
+    this.form.setValue({
+      _id: despesa._id,
+      name: despesa.name,
+      category: despesa.category,
+      price: despesa.price,
+    });
   }
 
   onSubmit() {
@@ -36,7 +50,7 @@ export class DespesasFormComponent {
     this.locaiton.back();
   }
 
-  onSucess(){
+  onSucess() {
     this.snackBar.open('Despesa salva com sucesso!', '', { duration: 5000 });
     this.onCancel();
   }
