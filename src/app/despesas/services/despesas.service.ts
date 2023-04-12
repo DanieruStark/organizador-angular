@@ -36,4 +36,8 @@ export class DespesasService {
   private update(despesa: Partial<Despesa>) {
     return this.httpClient.put<Despesa>(`${this.API}/${despesa._id}`, despesa);
   }
+
+  remove(id: string) {
+    return this.httpClient.delete(`${this.API}/${id}`);
+  }
 }
