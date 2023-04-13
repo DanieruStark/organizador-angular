@@ -8,6 +8,7 @@ import { catchError } from 'rxjs/operators';
 import { ErrorDialogComponent } from '../../../shared/components/error-dialog/error-dialog.component';
 import { Despesa } from '../../modelo/despesa';
 import { DespesasService } from '../../services/despesas.service';
+import { ConfirmationDialogComponent } from '../../../shared/components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-despesas',
@@ -51,16 +52,24 @@ export class DespesasComponent {
   }
 
   onRemove(despesa: Despesa) {
-    this.despesasService.remove(despesa._id).subscribe(
-      () => {
-        this.refresh();
-        this.snackBar.open('Despesa removida com sucesso!', 'X', {
-          duration: 5000,
-          verticalPosition: 'top',
-          horizontalPosition: 'center',
-        });
-      },
-      () => this.onError('Erro ao tentar remover curso.')
-    );
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: 'Quer remover o curso?',
+    });
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.despesasService.remove(despesa._id).subscribe(
+          () => {
+            this.refresh();
+            this.snackBar.open('Despesa removida com sucesso!', 'X', {
+              duration: 5000,
+              verticalPosition: 'top',
+              horizontalPosition: 'center',
+            });
+          },
+          () => this.onError('Erro ao tentar remover curso.')
+        );
+      }
+    });
   }
 }
